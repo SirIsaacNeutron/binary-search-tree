@@ -223,8 +223,16 @@ function buildTree(array, start, end) {
     return node
 }
 
+class Node {
+    constructor(data, left = null, right = null) {
+        this.data = data
+        this.left = left
+        this.right = right
+    }
+}
+
 // Pass in root node to print entire tree
-function prettyPrint(node, prefix = "", isLeft = true) {
+export function prettyPrint(node, prefix = "", isLeft = true) {
     if (node === null) {
         return
     }
@@ -234,13 +242,5 @@ function prettyPrint(node, prefix = "", isLeft = true) {
     console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`)
     if (node.left !== null) {
         prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true)
-    }
-}
-
-class Node {
-    constructor(data, left = null, right = null) {
-        this.data = data
-        this.left = left
-        this.right = right
     }
 }

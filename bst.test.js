@@ -1,4 +1,4 @@
-import BST from "./bst"
+import BST, { prettyPrint } from "./bst"
 
 const traversals = new BST([1, 5, 6, 9, 12])
 
@@ -27,13 +27,20 @@ test("depth", () => {
 })
 
 test("balancing", () => {
-    const bst = new BST([1, 5, 6, 9, 12])
+    const randoms = []
+    for (let i = 0; i < 100; ++i) {
+        const randomNumber = Math.floor(Math.random(101))
+        randoms.push(randomNumber)
+    }
+    const bst = new BST(randoms)
     expect(bst.isBalanced(bst.root)).toEqual(true)
 
-    bst.insert(21)
-    bst.insert(22)
-    bst.insert(19)
-    bst.insert(7)
+    bst.insert(200)
+    bst.insert(300)
+    bst.insert(1000)
+    bst.insert(350)
+    bst.insert(1500)
+    bst.insert(400)
 
     expect(bst.isBalanced(bst.root)).toEqual(false)
 
