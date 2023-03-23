@@ -21,3 +21,7 @@ test("levelorder traversal", () => {
 test("height", () => {
     expect(traversals.height(traversals.root)).toEqual(2)
 })
+
+test("depth", () => {
+    expect(traversals.depth(traversals.find(12))).toEqual(2)
+})

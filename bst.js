@@ -24,7 +24,7 @@ export default class BST {
         if (this.root === null) { 
             return 
         } 
-        // Because this is a BST we can get away with using an array (only 2 children max)
+        // Because this is a BST (only 2 children max per node) we can get away with using an array
         // But if there were more children, we'd need to implement a queue using a linked list
         // to avoid the inefficiencies of using arrays
         const queue = [this.root]
@@ -74,6 +74,10 @@ export default class BST {
         const maxHeight = leftHeight > rightHeight ? leftHeight : rightHeight
 
         return maxHeight + 1
+    }
+
+    depth = node => {
+        return findDepth(this.root, node)
     }
 }
 
@@ -144,6 +148,18 @@ function findRecursive(root, value) {
     // If root is not null, and value is not less than or greater than root's data,
     // it must be equal to it
     return root
+}
+
+function findDepth(root, node) {
+    if (root === null || root.data === node.data) {
+        return 0
+    }
+    if (node.data < root.data) {
+        return 1 + findDepth(root.left, node)
+    }
+    else if (node.data > root.data) {
+        return 1 + findDepth(root.right, node)
+    }
 }
 
 function inorderRecursive(root, array = []) {
