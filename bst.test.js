@@ -27,11 +27,14 @@ test("depth", () => {
 })
 
 test("balancing", () => {
-    const randoms = []
+    let randoms = []
     for (let i = 0; i < 100; ++i) {
         const randomNumber = Math.floor(1 + (Math.random() * 101))
         randoms.push(randomNumber)
     }
+    
+    randoms = Array.from(new Set(randoms)).sort((a, b) => a < b ? -1 : 1)
+
     const bst = new BST(randoms)
     expect(bst.isBalanced(bst.root)).toEqual(true)
 

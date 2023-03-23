@@ -9,6 +9,9 @@ export default class BST {
     }
 
     insert = value => {
+        if (this.find(value) !== null) {
+            return
+        }
         this.root = insertRecursive(this.root, value)
     }
 
@@ -99,7 +102,6 @@ export default class BST {
     }
 }
 
-// Doesn't insert duplicates!
 function insertRecursive(root, value) {
     if (root === null) {
         root = new Node(value)
