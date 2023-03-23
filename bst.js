@@ -20,6 +20,39 @@ export default class BST {
         return findRecursive(this.root, value)
     }
 
+    levelorder = (callback = null) => {
+        if (this.root === null) { 
+            return 
+        } 
+        // Because this is a BST we can get away with using an array (only 2 children max)
+        // But if there were more children, we'd need to implement a queue using a linked list
+        // to avoid the inefficiencies of using arrays
+        const queue = [this.root]
+
+        const array = []
+        while (queue.length !== 0) {
+            const currentNode = queue[0]
+            if (callback === null) {
+                array.push(currentNode.data)
+            }
+            else {
+                callback(currentNode.data)
+            }
+                        
+            if (currentNode.left !== null) {
+                queue.push(currentNode.left)
+            }
+            if (currentNode.right !== null) {
+                queue.push(currentNode.right)
+            }
+            queue.shift()
+        }
+
+        if (callback === null) {
+            return array
+        }
+    }
+
     inorder = () => {
         return inorderRecursive(this.root)
     }
@@ -30,6 +63,17 @@ export default class BST {
 
     postorder = () => {
         return postorderRecursive(this.root)
+    }
+
+    height = node => {
+        if (node === null) {
+            return -1
+        }
+        const leftHeight = this.height(node.left)
+        const rightHeight = this.height(node.right)
+        const maxHeight = leftHeight > rightHeight ? leftHeight : rightHeight
+
+        return maxHeight + 1
     }
 }
 
