@@ -29,7 +29,7 @@ test("depth", () => {
 test("balancing", () => {
     const randoms = []
     for (let i = 0; i < 100; ++i) {
-        const randomNumber = Math.floor(Math.random(101))
+        const randomNumber = Math.floor(1 + (Math.random() * 101))
         randoms.push(randomNumber)
     }
     const bst = new BST(randoms)
