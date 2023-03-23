@@ -232,7 +232,7 @@ class Node {
 }
 
 // Pass in root node to print entire tree
-export function prettyPrint(node, prefix = "", isLeft = true) {
+function prettyPrint(node, prefix = "", isLeft = true) {
     if (node === null) {
         return
     }

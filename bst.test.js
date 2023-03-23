@@ -1,4 +1,4 @@
-import BST, { prettyPrint } from "./bst"
+import BST from "./bst"
 
 const traversals = new BST([1, 5, 6, 9, 12])
 
