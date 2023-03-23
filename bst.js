@@ -19,6 +19,18 @@ export default class BST {
     find = value => {
         return findRecursive(this.root, value)
     }
+
+    inorder = () => {
+        return inorderRecursive(this.root)
+    }
+
+    preorder = () => {
+        return preorderRecursive(this.root)
+    }
+
+    postorder = () => {
+        return postorderRecursive(this.root)
+    }
 }
 
 // Doesn't insert duplicates!
@@ -88,6 +100,36 @@ function findRecursive(root, value) {
     // If root is not null, and value is not less than or greater than root's data,
     // it must be equal to it
     return root
+}
+
+function inorderRecursive(root, array = []) {
+    if (root === null) { 
+        return 
+    }
+    inorderRecursive(root.left, array)
+    array.push(root.data)
+    inorderRecursive(root.right, array)
+    return array
+}
+
+function preorderRecursive(root, array = []) {
+    if (root === null) {
+        return
+    }
+    array.push(root.data)
+    preorderRecursive(root.left, array)
+    preorderRecursive(root.right, array)
+    return array
+}
+
+function postorderRecursive(root, array = []) {
+    if (root === null) {
+        return
+    }
+    postorderRecursive(root.left, array)
+    postorderRecursive(root.right, array)
+    array.push(root.data)
+    return array
 }
 
 function buildTree(array, start, end) {

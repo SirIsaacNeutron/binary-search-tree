@@ -4,7 +4,7 @@
   "description": "A JavaScript implementation of a balanced binary search tree",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
