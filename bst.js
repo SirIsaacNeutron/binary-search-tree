@@ -79,6 +79,24 @@ export default class BST {
     depth = node => {
         return findDepth(this.root, node)
     }
+
+    isBalanced = node => {
+        if (node === null) {
+            return true
+        } 
+        const leftHeight = this.height(node.left)
+        const rightHeight = this.height(node.right)
+
+        // Difference between tree heights must be 1 or 0
+        // And both the right and left subtrees must be balanced
+        return leftHeight - rightHeight <= 1 && rightHeight - leftHeight <= 1 
+        && this.isBalanced(node.left) && this.isBalanced(node.right)
+    }
+
+    rebalance = () => {
+        const treeElementsSorted = this.inorder()
+        this.root = buildTree(treeElementsSorted, 0, treeElementsSorted.length - 1)
+    }
 }
 
 // Doesn't insert duplicates!

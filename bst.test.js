@@ -25,3 +25,18 @@ test("height", () => {
 test("depth", () => {
     expect(traversals.depth(traversals.find(12))).toEqual(2)
 })
+
+test("balancing", () => {
+    const bst = new BST([1, 5, 6, 9, 12])
+    expect(bst.isBalanced(bst.root)).toEqual(true)
+
+    bst.insert(21)
+    bst.insert(22)
+    bst.insert(19)
+    bst.insert(7)
+
+    expect(bst.isBalanced(bst.root)).toEqual(false)
+
+    bst.rebalance()
+    expect(bst.isBalanced(bst.root)).toEqual(true)
+})
