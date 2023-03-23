@@ -15,6 +15,10 @@ export default class BST {
     delete = value => {
         this.root = deleteRecursive(this.root, value)
     }
+
+    find = value => {
+        return findRecursive(this.root, value)
+    }
 }
 
 // Doesn't insert duplicates!
@@ -69,6 +73,21 @@ function minTreeValue(root) {
         root = root.left
     }
     return minValue
+}
+
+function findRecursive(root, value) {
+    if (root === null) {
+        return null
+    }
+    if (value < root.data) {
+        return findRecursive(root.left, value)
+    }
+    else if (value > root.data) {
+        return findRecursive(root.right, value)
+    }
+    // If root is not null, and value is not less than or greater than root's data,
+    // it must be equal to it
+    return root
 }
 
 function buildTree(array, start, end) {
